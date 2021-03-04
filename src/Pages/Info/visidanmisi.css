@@ -1,0 +1,13 @@
+.bodyvisimisi {
+    
+    background-image: url(../../Media/image/visi-dan-misi.jpg);
+    background-size: cover;
+    background-blend-mode: darken;
+    
+  }
+
+
+  .textvisidanmisi {
+    -webkit-text-stroke-width: 0.6px;
+    -webkit-text-stroke-color: black;
+  }
