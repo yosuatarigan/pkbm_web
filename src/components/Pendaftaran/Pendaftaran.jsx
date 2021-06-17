@@ -8,6 +8,7 @@ import { yellow } from '@material-ui/core/colors';
 const Register = () => {
 
     const dataaawal= {
+        nopendaftaran : '',
         namalengkap : '',
         tempatdantanggallahir : '',
         nik : '',
@@ -104,6 +105,8 @@ doc.text(x3, y, 'Kementerian Pendidikan dan Kebudayaan')
 doc.text(x3+60, y=y+yi, 'PKBM Hanuba Medan')
 doc.text(x3+25, y=y+yi,'Formulir Pendaftaran siswa baru')
 doc.text(x3+25, y=y+yi,'TAHUN PELAJARAN 2020/2021')
+doc.text(x, y=y+yi+yi,'No. Pendaftaran')
+doc.text(x4,y, `   : ${datadaftar.nopendaftaran}`)
 doc.text(x, y=y+yi+yi,'I. CALON SISWA')
 doc.text(x2, y=y+yi,'1. Nama Lengkap')
 doc.text(x4,y, `   : ${datadaftar.namalengkap}`)
@@ -226,6 +229,7 @@ doc.save("pendaftar.pdf")
                 < fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                     <legend className="f2 blue fw6 ph0 mh0">Pendaftaran Siswa Baru</legend>
                     <legend className="f4 fw6 ph0 mh0">Data Pribadi</legend>
+                    <Field value={datadaftar.nopendaftaran} labelfield='No Pendaftaran' handlechange={handleChange} namefield='nopendaftaran' />
                     <Field value={datadaftar.namalengkap} labelfield='Nama Lengkap' handlechange={handleChange} namefield='namalengkap' />
                     <Field value={datadaftar.tempatdantanggallahir} labelfield='Tempat/tgl lahir' handlechange={handleChange} namefield='tempatdantanggallahir'/>
                     <Field value={datadaftar.nik} labelfield='NIK' handlechange={handleChange} namefield='nik'/>
