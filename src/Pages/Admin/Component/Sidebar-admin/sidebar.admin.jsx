@@ -40,10 +40,11 @@ import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import Button from '@material-ui/core/Button';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import Fasilitas from '../Fasilitas-admin/Fasilitas.admin';
-import {auth} from '../../firebase/firebase.utils';
-import {Redirect} from 'react-router-dom'
+import { auth } from '../../firebase/firebase.utils';
+import { Redirect } from 'react-router-dom'
 import WidgetsIcon from '@material-ui/icons/Widgets';
 import firebase from '../../firebase/firebase.utils';
+import Skladmin from '../SKL-admin/skladmin';
 
 const drawerWidth = 240;
 
@@ -97,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
-      },
+    },
     toolbar: {
         display: 'flex',
         alignItems: 'center',
@@ -112,13 +113,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Sidebar({handlesignoutuser,history,match}) {
+function Sidebar({ handlesignoutuser, history, match }) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const [route,setroute] = React.useState("Log");
+    const [route, setroute] = React.useState("Log");
     const [emailuser, setemailuser] = React.useState("");
-    
+
 
 
     const handleDrawerOpen = () => {
@@ -129,24 +130,24 @@ function Sidebar({handlesignoutuser,history,match}) {
         setOpen(false);
     };
 
-    
-  const  handlesignout = ()=>{
-        auth.signOut() 
+
+    const handlesignout = () => {
+        auth.signOut()
         handlesignoutuser()
 
     }
 
     React.useEffect(() => {
-        firebase.auth().onAuthStateChanged(function(user) {
+        firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
-              // User is signed in.
-              setemailuser(user.email)
+                // User is signed in.
+                setemailuser(user.email)
             } else {
-             
-              // ...
+
+                // ...
             }
-          })
-      }, [])
+        })
+    }, [])
 
     return (
         <div className={classes.root}>
@@ -172,10 +173,10 @@ function Sidebar({handlesignoutuser,history,match}) {
                     {/* <Typography variant="h6" noWrap>
                         {route}
           </Typography> */}
-            <Typography variant="h6" className={classes.title}>
-            {route}
-          </Typography>
-          <Button color="inherit" onClick={handlesignout}>Sign Out</Button>
+                    <Typography variant="h6" className={classes.title}>
+                        {route}
+                    </Typography>
+                    <Button color="inherit" onClick={handlesignout}>Sign Out</Button>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -198,8 +199,8 @@ function Sidebar({handlesignoutuser,history,match}) {
                 </div>
                 <Divider />
                 <List>
-                    {['Home','Log', 'User', 'Article', 'Siswa','Absensi','Alumni','Tutor'].map((text, index) => (
-                        <ListItem button key={text} onClick={()=> setroute(text)}  >
+                    {['Home', 'SKL', 'Log', 'User', 'Article', 'Siswa', 'Absensi', 'Alumni', 'Tutor'].map((text, index) => (
+                        <ListItem button key={text} onClick={() => setroute(text)}  >
 
                             <ListItemIcon>{text === 'Home' ? <HomeIcon /> :
                                 (text === "User" ?
@@ -208,19 +209,22 @@ function Sidebar({handlesignoutuser,history,match}) {
                                     text === "Article" ?
                                         <AssignmentIcon />
                                         :
-                                    text === "Alumni" ?
-                                        <SupervisedUserCircleIcon />
-                                        :
-                                    text === "Tutor" ?
-                                        <LocalLibraryIcon />
-                                        :
-                                    text === "Log" ?
-                                        <AccessTimeIcon/>
-                                        :
-                                    text === "Absensi" ?
-                                        <FingerprintIcon />
-                                        :
-                                        <PeopleOutlineIcon />
+                                        text === "SKL" ?
+                                            <AssignmentIcon />
+                                            :
+                                            text === "Alumni" ?
+                                                <SupervisedUserCircleIcon />
+                                                :
+                                                text === "Tutor" ?
+                                                    <LocalLibraryIcon />
+                                                    :
+                                                    text === "Log" ?
+                                                        <AccessTimeIcon />
+                                                        :
+                                                        text === "Absensi" ?
+                                                            <FingerprintIcon />
+                                                            :
+                                                            <PeopleOutlineIcon />
                                 )}
                             </ListItemIcon>
                             <ListItemText primary={text} />
@@ -229,20 +233,20 @@ function Sidebar({handlesignoutuser,history,match}) {
                 </List>
                 <Divider />
                 <List>
-                    {['Kritik & Saran','Fasilitas' ,'Setting', 'Galeri','Pendaftar'].map((text, index) => (
-                        <ListItem button key={text} onClick={()=> setroute(text)} >
+                    {['Kritik & Saran', 'Fasilitas', 'Setting', 'Galeri', 'Pendaftar'].map((text, index) => (
+                        <ListItem button key={text} onClick={() => setroute(text)} >
                             <ListItemIcon>{text === "Kritik & Saran" ? <ChatBubbleIcon /> :
                                 (
                                     text === "Setting" ?
                                         <SettingsIcon />
                                         :
-                                        text ==="Fasilitas" ?
-                                        <WidgetsIcon/>
-                                        :
-                                        text ==="Galeri" ?
-                                        <PhotoAlbumIcon/>
-                                        :
-                                        <AssignmentIndIcon/>
+                                        text === "Fasilitas" ?
+                                            <WidgetsIcon />
+                                            :
+                                            text === "Galeri" ?
+                                                <PhotoAlbumIcon />
+                                                :
+                                                <AssignmentIndIcon />
                                 )
                             }
 
@@ -254,46 +258,49 @@ function Sidebar({handlesignoutuser,history,match}) {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-               {
-                   route === "Log" ?
-                   <HomeAdmin/>
-                   :
-                   ( route==="User" ?
-                   <User emailuser={emailuser}/>
-                   :
-                   route === "Article" ?
-                   <Article emailuser={emailuser}/>
-                   :
-                   route === "Siswa" ?
-                   <Siswa emailuser={emailuser}/>
-                   :
-                   route === "Kritik & Saran" ?
-                   <Kritikdansaran emailuser={emailuser}/>
-                   :
-                   route === "Fasilitas" ?
-                   <Fasilitas emailuser={emailuser}/>
-                   :
-                   route === "Setting" ?
-                   <Setting emailuser={emailuser}/>
-                   :
-                   route === "Absensi" ?
-                   <Absensi emailuser={emailuser}/>
-                   :
-                   route === "Alumni" ?
-                   <Alumni emailuser={emailuser}/>
-                   :
-                   route === "Tutor" ?
-                   <Tutor emailuser={emailuser}/>
-                   :
-                   route === "Pendaftar" ?
-                   <Pendaftar emailuser={emailuser}/>
-                   :
-                   route === "Galeri" ?
-                   <Galeri emailuser={emailuser}/>
-                   :
-                   <Redirect to='/'/>
-                    )
-               }
+                {
+                    route === "Log" ?
+                        <HomeAdmin />
+                        :
+                        (route === "User" ?
+                            <User emailuser={emailuser} />
+                            :
+                            route === "Article" ?
+                                <Article emailuser={emailuser} />
+                                :
+                                route === "SKL" ?
+                                    <Skladmin />
+                                    :
+                                    route === "Siswa" ?
+                                        <Siswa emailuser={emailuser} />
+                                        :
+                                        route === "Kritik & Saran" ?
+                                            <Kritikdansaran emailuser={emailuser} />
+                                            :
+                                            route === "Fasilitas" ?
+                                                <Fasilitas emailuser={emailuser} />
+                                                :
+                                                route === "Setting" ?
+                                                    <Setting emailuser={emailuser} />
+                                                    :
+                                                    route === "Absensi" ?
+                                                        <Absensi emailuser={emailuser} />
+                                                        :
+                                                        route === "Alumni" ?
+                                                            <Alumni emailuser={emailuser} />
+                                                            :
+                                                            route === "Tutor" ?
+                                                                <Tutor emailuser={emailuser} />
+                                                                :
+                                                                route === "Pendaftar" ?
+                                                                    <Pendaftar emailuser={emailuser} />
+                                                                    :
+                                                                    route === "Galeri" ?
+                                                                        <Galeri emailuser={emailuser} />
+                                                                        :
+                                                                        <Redirect to='/' />
+                        )
+                }
             </main>
         </div>
     );
