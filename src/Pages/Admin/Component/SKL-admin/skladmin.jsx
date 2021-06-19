@@ -1,7 +1,53 @@
 import React from 'react';
 import firebase, { adddata, firestore } from '../../firebase/firebase.utils';
 import jsPDF from 'jspdf';
-import { CodeSharp } from '@material-ui/icons';
+var hash = require('hash.js')
+
+
+const _p = 11;
+const _q = 13;
+var _tn;
+var _n;
+var _e;
+var _d;
+var _c = [];
+var _m = [];
+
+const getkey = () => {
+    _n = _p * _q;
+    _tn = (_p - 1) * (_q - 1);
+    _e = 17;
+
+    // nilai d ditentukan dengan rumus (d x e) mod totien = 1
+    // nilai d dicoba satu per satu mulai dari 2, 3, 4, dst sehingga rumus tersebut terpenuhi
+    for (_d = 2; _d < 1000; _d++) {
+        if ((_d * _e) % _tn == 1) {
+            _d = _d;
+
+            break;
+        }
+    }
+}
+
+const enkrip = (pesan) => {
+    _c = [];
+    // _c = pesan.map((angka) => angka.modPow(_e, _n));
+    //  _c= pesan.modPow(_e, _n);
+
+    for (var i = 0; i < pesan.length; i++) {
+        _c.add(pesan[i].modPow(_e, _n));
+    }
+}
+
+const dekrip = (ciper) => {
+    _m = [];
+    // _m = pow(ciper, _d) % _n;
+    // _m = ciper.map((angka) => angka.modPow(_d, _n));
+    // _m = ciper.modPow(_d, _n);
+    for (var i = 0; i < ciper.length; i++) {
+        _m.add(ciper[i].modPow(_d, _n));
+    }
+}
 
 const Skladmin = () => {
     const [data, setdata] = React.useState("ini data lama");
@@ -22,13 +68,17 @@ const Skladmin = () => {
                 //     // doc.data() will be undefined in this case
                 //     console.log("No such document!");
                 // }
-                console.log(doc.id);
-                setdata({id : doc.id, ...doc.data()});
+                // console.log(doc.id);
+                setdata({ id: doc.id, ...doc.data() });
             })
         pdfgenerator();
 
-        
+
     }
+
+    var di = hash.sha256().update('abc').digest('hex');
+
+    console.log(di);
 
     // React.useEffect(() => {
     //     firestore.collection('siswa')
@@ -42,8 +92,8 @@ const Skladmin = () => {
     // }, [])
 
 
-    console.log(`ini data ${data.id}` );
-    console.log(`ini data ${data.namalengkap}` );
+    console.log(`ini data ${data.id}`);
+    console.log(`ini data ${data.namalengkap}`);
 
 
     const pdfgenerator = () => {
@@ -59,7 +109,7 @@ const Skladmin = () => {
         doc.text(x3 + 60, y = y + yi, 'PKBM Hanuba Medan')
         doc.text(x3 + 25, y = y + yi, 'Formulir Pendaftaran siswa baru')
         doc.text(x3 + 25, y = y + yi, 'TAHUN PELAJARAN 2020/2021')
-     
+
         doc.text(x, y = y + yi + yi, 'I. CALON SISWA')
         doc.text(x2, y = y + yi, '1. Nama Lengkap')
         doc.text(x4, y, `   : ${data.namalengkap}`)
@@ -182,7 +232,7 @@ const Skladmin = () => {
 
             </fieldset>
             <div className="">
-                <input onClick={handleclick} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Cetak" />
+                <input onClick={handleclick} className="b ph3 pv2 input-reset ba b--black bg-transparent grow povarer f6 dib" type="submit" value="Cetak" />
             </div>
         </main>
     </article>)
