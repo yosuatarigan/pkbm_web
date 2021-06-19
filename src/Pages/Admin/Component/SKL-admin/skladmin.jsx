@@ -1,28 +1,33 @@
 import React from 'react';
 import firebase, { adddata, firestore } from '../../firebase/firebase.utils';
 import jsPDF from 'jspdf';
+import { CodeSharp } from '@material-ui/icons';
 
 const Skladmin = () => {
-    const [data, setdata] = React.useState([]);
+    const [data, setdata] = React.useState("ini data lama");
     const [ni, setni] = React.useState("");
     const handleclick = async (e) => {
         firestore.collection('siswa').doc(`${ni}`)
             .get().then((doc) => {
-                if (doc.exists) {
-                    // console.log("Document data:", doc.data());
+                // if (doc.exists) {
+                //     // console.log("Document data:", doc.data());
 
+                //     // const datanya = { id: doc.id, ...doc.data() };
+                //     // console.log(datanya);
+                //     // const fetch = async () => await setdata(datanya);
+                //     // fetch();
+                //     console.log(doc.id);
 
-                    console.log(doc.data().namalengkap);
-                    setdata({ namalengkap: doc.data().namalengkap });
-
-                } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                }
-
+                // } else {
+                //     // doc.data() will be undefined in this case
+                //     console.log("No such document!");
+                // }
+                console.log(doc.id);
+                setdata({id : doc.id, ...doc.data()});
             })
         pdfgenerator();
-console.log(data.namalengkap);
+
+        
     }
 
     // React.useEffect(() => {
@@ -37,7 +42,8 @@ console.log(data.namalengkap);
     // }, [])
 
 
-
+    console.log(`ini data ${data.id}` );
+    console.log(`ini data ${data.namalengkap}` );
 
 
     const pdfgenerator = () => {
@@ -53,109 +59,108 @@ console.log(data.namalengkap);
         doc.text(x3 + 60, y = y + yi, 'PKBM Hanuba Medan')
         doc.text(x3 + 25, y = y + yi, 'Formulir Pendaftaran siswa baru')
         doc.text(x3 + 25, y = y + yi, 'TAHUN PELAJARAN 2020/2021')
-        doc.text(x, y = y + yi + yi, 'No. Pendaftaran')
-        doc.text(x4, y, `   : .nopendaftaran}`)
+     
         doc.text(x, y = y + yi + yi, 'I. CALON SISWA')
         doc.text(x2, y = y + yi, '1. Nama Lengkap')
-        doc.text(x4, y, `   : .namalengkap}`)
+        doc.text(x4, y, `   : ${data.namalengkap}`)
 
         doc.text(x2, y = y + yi, '2. Tempat/tgl lahir')
-        doc.text(x4, y, `   :.tempatdantanggallahir}`)
+        doc.text(x4, y, `   :${data.tempatdantanggallahir}`)
 
         doc.text(x2, y = y + yi, '3. Nik')
-        doc.text(x4, y, `   : .nik}`)
+        doc.text(x4, y, `   : ${data.nik}`)
 
         doc.text(x2, y = y + yi, '4. NISN')
-        doc.text(x4, y, `   : .nisn}`)
+        doc.text(x4, y, `   : ${data.nisn}`)
 
         doc.text(x2, y = y + yi, '5. Jenis Kelamin')
-        doc.text(x4, y, `   : .jeniskelamin}`)
+        doc.text(x4, y, `   : ${data.jeniskelamin}`)
 
         doc.text(x2, y = y + yi, '6. Agama')
-        doc.text(x4, y, `   : .agama}`)
+        doc.text(x4, y, `   : ${data.agama}`)
 
         doc.text(x2, y = y + yi, '7. Alamat')
-        doc.text(x4, y, `   : .alamat}`)
+        doc.text(x4, y, `   : ${data.alamat}`)
 
         doc.text(x2, y = y + yi, '8. Kelurahan')
-        doc.text(x4, y, `   : .kelurahan}`)
+        doc.text(x4, y, `   : ${data.kelurahan}`)
 
         doc.text(x2, y = y + yi, '9. Kecamatan')
-        doc.text(x4, y, `   : .kecamatan}`)
+        doc.text(x4, y, `   : ${data.kecamatan}`)
 
         doc.text(x2, y = y + yi, '10.Kota')
-        doc.text(x4, y, `   : .kota}`)
+        doc.text(x4, y, `   : ${data.kota}`)
 
         doc.text(x2, y = y + yi, '11.Provinsi')
-        doc.text(x4, y, `   : .provinsi}`)
+        doc.text(x4, y, `   : ${data.provinsi}`)
 
         doc.text(x2, y = y + yi, '12.Kode Pos')
-        doc.text(x4, y, `   : .kodepos}`)
+        doc.text(x4, y, `   : ${data.kodepos}`)
 
         doc.text(x2, y = y + yi, '13.Rencana Program')
-        doc.text(x4, y, `   : .rencanaprogram}`)
+        doc.text(x4, y, `   : ${data.rencanaprogram}`)
 
         doc.text(x2, y = y + yi, '14.Email')
-        doc.text(x4, y, `   : .email}`)
+        doc.text(x4, y, `   : ${data.email}`)
 
         doc.text(x2, y = y + yi, '15.No Hp')
-        doc.text(x4, y, `   : .nohppribadi}`)
+        doc.text(x4, y, `   : ${data.nohppribadi}`)
 
         doc.text(x2, y = y + yi, '16.No Ijazah')
-        doc.text(x4, y, `   : .noijazah}`)
+        doc.text(x4, y, `   : ${data.noijazah}`)
 
         doc.text(x2, y = y + yi, '17.No SKHU')
-        doc.text(x4, y, `   : .noskhu}`)
+        doc.text(x4, y, `   : ${data.noskhu}`)
 
         doc.text(x2, y = y + yi, '18.Tahun Tamat')
-        doc.text(x4, y, `   : .tahuntamat}`)
+        doc.text(x4, y, `   : ${data.tahuntamat}`)
 
         doc.text(x, y = y + yi + yi, 'II. Data Orang Tua')
         doc.text(x2, y = y + yi, '1. Nama Ayah')
-        doc.text(x4, y, `   : .namaayah}`)
+        doc.text(x4, y, `   : ${data.namaayah}`)
 
         doc.text(x2, y = y + yi, '2. Tahun Lahir Ayah')
-        doc.text(x4, y, `   : .tahunlahirayah}`)
+        doc.text(x4, y, `   : ${data.tahunlahirayah}`)
 
         doc.text(x2, y = y + yi, '3. Pekerjaan Ayah')
-        doc.text(x4, y, `   : .pekerjaanayah}`)
+        doc.text(x4, y, `   : ${data.pekerjaanayah}`)
 
         doc.text(x2, y = y + yi, '4. Pendidikan Terakhir Ayah')
-        doc.text(x4, y, `   : .pendidikanterakhirayah}`)
+        doc.text(x4, y, `   : ${data.pendidikanterakhirayah}`)
 
         doc.text(x2, y = y + yi, '5. No. Hp Ayah')
-        doc.text(x4, y, `   : .nohpayah}`)
+        doc.text(x4, y, `   : ${data.nohpayah}`)
 
         doc.text(x2, y = y + yi, '6. Nama Ibu')
-        doc.text(x4, y, `   : .namaibu}`)
+        doc.text(x4, y, `   : ${data.namaibu}`)
 
         doc.text(x2, y = y + yi, '7. Tahun Lahir Ibu')
-        doc.text(x4, y, `   : .tahunlahiribu}`)
+        doc.text(x4, y, `   : ${data.tahunlahiribu}`)
 
         doc.text(x2, y = y + yi, '8. Pekerjaan Ibu')
-        doc.text(x4, y, `   : .pekerjaanibu}`)
+        doc.text(x4, y, `   : ${data.pekerjaanibu}`)
 
         doc.text(x2, y = y + yi, '9. Pendidikan Terakhir Ibu')
-        doc.text(x4, y, `   : .pendidikanterakhiribu}`)
+        doc.text(x4, y, `   : ${data.pendidikanterakhiribu}`)
 
         doc.text(x2, y = y + yi, '10. No. Hp Ibu')
-        doc.text(x4, y, `   : .nohpibu}`)
+        doc.text(x4, y, `   : ${data.nohpibu}`)
 
         doc.text(x, y = y + yi + yi, 'III. Wali')
         doc.text(x2, y = y + yi, '6. Nama Wali')
-        doc.text(x4, y, `   : .namawali}`)
+        doc.text(x4, y, `   : ${data.namawali}`)
 
         doc.text(x2, y = y + yi, '7. Tahun Lahir Wali')
-        doc.text(x4, y, `   : .tahunlahirwali}`)
+        doc.text(x4, y, `   : ${data.tahunlahirwali}`)
 
         doc.text(x2, y = y + yi, '8. Pekerjaan Wali')
-        doc.text(x4, y, `   : .pekerjaanwali}`)
+        doc.text(x4, y, `   : ${data.pekerjaanwali}`)
 
         doc.text(x2, y = y + yi, '9. Pendidikan Terakhir Wali')
-        doc.text(x4, y, `   : .pendidikanterakhirwali}`)
+        doc.text(x4, y, `   : ${data.pendidikanterakhirwali}`)
 
         doc.text(x2, y = y + yi, '10. No. Hp Wali')
-        doc.text(x4, y, `   : .nohpwali}`)
+        doc.text(x4, y, `   : ${data.nohpwali}`)
 
         doc.save("pendaftar.pdf")
 
