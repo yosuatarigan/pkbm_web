@@ -121,6 +121,7 @@ const Skladmin = () => {
         const x3 = 180;
         const x4 = 250;
         var y = 20;
+        var no = 1;
         const yi = 18;
         var doc = new jsPDF('p', 'pt');
         doc.setFontSize(20)
@@ -149,7 +150,7 @@ const Skladmin = () => {
         doc.text(x3 + 50, y = y + yi, 'pkbmhanuba@yanur.net')
 
         doc.setLineWidth(1)
-        doc.line(x3- 100, y = y + 10, 520, y )
+        doc.line(x3 - 100, y = y + 10, 520, y)
         doc.setFont('Times New Roman', 'bold')
         doc.setFontSize(16)
         doc.text(x3 + 25, y = y + yi, 'SURAT KETERANGAN')
@@ -188,7 +189,102 @@ const Skladmin = () => {
         doc.text(x3 - 90, y = y + yi, `LULUS`)
         doc.text(x3 - 50, y, `dengan hasil Nilai Akhir sebagai berikut.`)
 
+        doc.setLineWidth(1)
+        doc.line(x2 + 35, y + 10, 500, y+10) // garis atas
+        doc.line(x2 + 35, y + 10, x2 + 35, 680) // garis kebawah satu
+        doc.line(x2 + 55, y + 10, x2 + 55, 680) // garis kebawah dua
+        doc.line(x4, y + 10, x4, 680) // garis kebawah tiga
+        doc.line(x4 + 120, y + 31, x4 + 120, 680) // garis kebawah empat
+        doc.line(500, y + 10, 500, 680) // garis kebawah lima
+
+        doc.text(x2 + 40, y = y + yi + yi, 'No')
+        doc.text(x2 + 60, y, 'MATA PELAJARAN')
+        doc.text(x4 + 100, y = y - 10, 'NILAI AKHIR')
+
+        doc.line(x4 , y + 4, 500, y+4)  // garis tengah 
+        doc.text(x4 + 40, y = y + yi, 'ANGKA')
+        doc.text(x4 + 150, y = y, 'HURUF')
+
+        doc.line(x2 + 35, y + 10, 500, y+10) //garus atas 2
+        doc.line(x2 + 35, 680, 500, 680) //garus paling bawah
+
+        
+        doc.text(x2 + 40, y = y + yi + 3, `${no}`)
+        doc.text(x2 + 60, y, `Agama`)
+        doc.text(x4 + 50, y, `90`)
+        doc.text(x4 + 130, y, `Sembilan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+        
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+        doc.text(x2 + 40, y = y + yi, `${no = no + 1}`)
+        doc.text(x2 + 60, y, `Matematika`)
+        doc.text(x4 + 50, y, `80`)
+        doc.text(x4 + 130, y, `Delapan Puluh`)
+
+
+        doc.text(x3 - 90, y = y + yi + yi, 'Demikian surat keterangan ini diperbuat sesuai dengan kebutuhan dan hanya berlaku')
+        doc.text(x3 - 90, y = y + yi, 'sampai dengan diterbitkannya Ijazah dari Dinas Pendidikan ')
+        doc.text(x3 - 90, y + yi, 'Kode Hash')
+
+
+        doc.text(x4 + 160, y = y + yi , 'Medan , 22 Juni 2021')
+        doc.text(x4 + 160, y+10, 'PKBM Hanuba')
+        doc.text(x4 + 160, y+70, 'Jontar Sinaga, SE')
+
        
+
+
+ 
+
+        
 
         doc.save("SKL.pdf")
 
