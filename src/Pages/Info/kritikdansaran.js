@@ -6,8 +6,9 @@ const Kritik = ()=>{
   const [displayName, setdisplayName] = React.useState('');
   const [kritikdanpesan, setkritikdanpesan] = React.useState('');
 
-  const onsend = ()=>{
-    adddata('transitkritikdanpesan',{displayName,kritikdanpesan})
+  const onsend = async ()=>{
+  await  adddata('transitkritikdanpesan',{displayName,kritikdanpesan})
+  alert('data berhasil ditambahkan')
   }    
 
   return (
@@ -17,7 +18,7 @@ const Kritik = ()=>{
              <label>Nama :</label> <input type='text' onChange={(e)=>setdisplayName(e.target.value)} />
              <br/>
                <textarea onChange={(e)=>setkritikdanpesan(e.target.value)} id="comment" name="comment" className="center db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" ></textarea>
-            <input  onClick={()=>onsend} className="btn btn-primary" href="#0" type="submit" value="Kirim"/ >
+            <input  onClick={onsend} className="btn btn-primary" href="#0" type="submit" value="Kirim"/ >
             
         </div>
     </div>

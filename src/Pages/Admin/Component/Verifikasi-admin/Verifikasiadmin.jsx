@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase, { adddata, firestore } from '../../firebase/firebase.utils';
 
-const Sklvalidasi = () => {
+const Verifikasiadmin = () => {
     const [data, setdata] = React.useState([]);
     const [ni, setni] = React.useState("");
     const handleclick = async (e) => {
@@ -30,9 +30,9 @@ const Sklvalidasi = () => {
         <main className="pa4 black-80">
 
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                <legend className="f1 fw6 ph0 mh0">Validasi SKL</legend>
+                <legend className="f1 fw6 ph0 mh0">Verifikasi Pendaftaran</legend>
                 <div >
-                    <label className="db fw6 lh-copy f6 " >Kode Hash</label>
+                    <label className="db fw6 lh-copy f6 " ></label>
                     <input className="pa2 input-reset ba bg-transparent hover-bg-black  w-100"
                         onChange={(e) => setni(e.target.value)}
                         type="text" name="title" id="title" />
@@ -47,4 +47,4 @@ const Sklvalidasi = () => {
     </article>)
 }
 
-export default Sklvalidasi;
+export default Verifikasiadmin;

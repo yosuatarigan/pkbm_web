@@ -309,7 +309,7 @@ const Skladmin = () => {
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                 <legend className="f1 fw6 ph0 mh0">Form SKL</legend>
                 <div >
-                    <label className="db fw6 lh-copy f6 " >Nomor Induk</label>
+                    <label className="db fw6 lh-copy f6 " >Nomor NISN</label>
                     <input className="pa2 input-reset ba bg-transparent hover-bg-black  w-100"
                         onChange={(e) => setni(e.target.value)}
                         type="text" name="title" id="title" />

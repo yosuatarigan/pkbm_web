@@ -46,6 +46,7 @@ import WidgetsIcon from '@material-ui/icons/Widgets';
 import firebase from '../../firebase/firebase.utils';
 import Skladmin from '../SKL-admin/skladmin';
 import Sklvalidasi from '../SKL-admin/sklvalidasi';
+import Verifikasiadmin from '../Verifikasi-admin/Verifikasiadmin';
 
 const drawerWidth = 240;
 
@@ -200,7 +201,7 @@ function Sidebar({ handlesignoutuser, history, match }) {
                 </div>
                 <Divider />
                 <List>
-                    {['Home', 'SKL', 'Validasi SKL', 'Log', 'User', 'Article', 'Siswa', 'Absensi', 'Alumni', 'Tutor'].map((text, index) => (
+                    {['Home', 'SKL', 'Validasi SKL', 'Verifikasi Pendaftaran', 'Log', 'User', 'Article', 'Siswa', 'Absensi', 'Alumni', 'Tutor'].map((text, index) => (
                         <ListItem button key={text} onClick={() => setroute(text)}  >
 
                             <ListItemIcon>{text === 'Home' ? <HomeIcon /> :
@@ -216,19 +217,22 @@ function Sidebar({ handlesignoutuser, history, match }) {
                                             text === "Validasi SKL" ?
                                                 <AssignmentIcon />
                                                 :
-                                                text === "Alumni" ?
-                                                    <SupervisedUserCircleIcon />
+                                                text === "Verifikasi Pendaftaran" ?
+                                                    <AssignmentIcon />
                                                     :
-                                                    text === "Tutor" ?
-                                                        <LocalLibraryIcon />
+                                                    text === "Alumni" ?
+                                                        <SupervisedUserCircleIcon />
                                                         :
-                                                        text === "Log" ?
-                                                            <AccessTimeIcon />
+                                                        text === "Tutor" ?
+                                                            <LocalLibraryIcon />
                                                             :
-                                                            text === "Absensi" ?
-                                                                <FingerprintIcon />
+                                                            text === "Log" ?
+                                                                <AccessTimeIcon />
                                                                 :
-                                                                <PeopleOutlineIcon />
+                                                                text === "Absensi" ?
+                                                                    <FingerprintIcon />
+                                                                    :
+                                                                    <PeopleOutlineIcon />
                                 )}
                             </ListItemIcon>
                             <ListItemText primary={text} />
@@ -278,34 +282,37 @@ function Sidebar({ handlesignoutuser, history, match }) {
                                     route === "Validasi SKL" ?
                                         <Sklvalidasi />
                                         :
-                                        route === "Siswa" ?
-                                            <Siswa emailuser={emailuser} />
+                                        route === "Verifikasi Pendaftaran" ?
+                                            <Verifikasiadmin />
                                             :
-                                            route === "Kritik & Saran" ?
-                                                <Kritikdansaran emailuser={emailuser} />
+                                            route === "Siswa" ?
+                                                <Siswa emailuser={emailuser} />
                                                 :
-                                                route === "Fasilitas" ?
-                                                    <Fasilitas emailuser={emailuser} />
+                                                route === "Kritik & Saran" ?
+                                                    <Kritikdansaran emailuser={emailuser} />
                                                     :
-                                                    route === "Setting" ?
-                                                        <Setting emailuser={emailuser} />
+                                                    route === "Fasilitas" ?
+                                                        <Fasilitas emailuser={emailuser} />
                                                         :
-                                                        route === "Absensi" ?
-                                                            <Absensi emailuser={emailuser} />
+                                                        route === "Setting" ?
+                                                            <Setting emailuser={emailuser} />
                                                             :
-                                                            route === "Alumni" ?
-                                                                <Alumni emailuser={emailuser} />
+                                                            route === "Absensi" ?
+                                                                <Absensi emailuser={emailuser} />
                                                                 :
-                                                                route === "Tutor" ?
-                                                                    <Tutor emailuser={emailuser} />
+                                                                route === "Alumni" ?
+                                                                    <Alumni emailuser={emailuser} />
                                                                     :
-                                                                    route === "Pendaftar" ?
-                                                                        <Pendaftar emailuser={emailuser} />
+                                                                    route === "Tutor" ?
+                                                                        <Tutor emailuser={emailuser} />
                                                                         :
-                                                                        route === "Galeri" ?
-                                                                            <Galeri emailuser={emailuser} />
+                                                                        route === "Pendaftar" ?
+                                                                            <Pendaftar emailuser={emailuser} />
                                                                             :
-                                                                            <Redirect to='/' />
+                                                                            route === "Galeri" ?
+                                                                                <Galeri emailuser={emailuser} />
+                                                                                :
+                                                                                <Redirect to='/' />
                         )
                 }
             </main>
