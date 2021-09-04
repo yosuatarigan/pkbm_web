@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1ae41838.chunk.css",
+    "main.js": "/static/js/main.cd54c9c4.chunk.js",
+    "main.js.map": "/static/js/main.cd54c9c4.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1c6855af.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1c6855af.js.map",
+    "static/css/2.ca1c6826.chunk.css": "/static/css/2.ca1c6826.chunk.css",
+    "static/js/2.dc3918b0.chunk.js": "/static/js/2.dc3918b0.chunk.js",
+    "static/js/2.dc3918b0.chunk.js.map": "/static/js/2.dc3918b0.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.2dc2f1dbeb9277df81b4578cf9d0d72c.js": "/precache-manifest.2dc2f1dbeb9277df81b4578cf9d0d72c.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.ca1c6826.chunk.css.map": "/static/css/2.ca1c6826.chunk.css.map",
+    "static/css/main.1ae41838.chunk.css.map": "/static/css/main.1ae41838.chunk.css.map",
+    "static/js/2.dc3918b0.chunk.js.LICENSE.txt": "/static/js/2.dc3918b0.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/testimonials-bg.107d665e.jpg",
+    "static/media/Alumni.css": "/static/media/bg-alumni.b337f2e9.jpg",
+    "static/media/pendaftaran.css": "/static/media/bg-pendaftar.526a333a.jpg",
+    "static/media/fasilitas-min.png": "/static/media/fasilitas-min.a79f983a.png",
+    "static/media/logosekolah-min.png": "/static/media/logosekolah-min.2519033d.png",
+    "static/media/teacher-min.png": "/static/media/teacher-min.654cd0eb.png",
+    "static/media/topiwisuda-min.png": "/static/media/topiwisuda-min.8d3b7713.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1c6855af.js",
+    "static/css/2.ca1c6826.chunk.css",
+    "static/js/2.dc3918b0.chunk.js",
+    "static/css/main.1ae41838.chunk.css",
+    "static/js/main.cd54c9c4.chunk.js"
+  ]
+}
